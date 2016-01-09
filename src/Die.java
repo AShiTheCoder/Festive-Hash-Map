@@ -1,7 +1,7 @@
 
 public class Die {
-	int sides;
-	int roll = 0;
+	private int sides;
+	private int roll = 0;
 	
 	public Die(int s){
 		sides = s;
