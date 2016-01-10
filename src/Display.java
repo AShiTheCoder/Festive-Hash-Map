@@ -41,6 +41,7 @@ public class Display extends JFrame implements MouseListener{
 		repaint();
 		initHistogram(g);
 		refreshBars(g);
+		y_scale = (this.getHeight()-200.0)/max;
 	}
 	
 	void initHistogram(Graphics g){
@@ -74,6 +75,10 @@ public class Display extends JFrame implements MouseListener{
 		for (int i = 0; i < pos; i++){
 			g.fillRect(((this.getWidth()-200)/pos)*i+100+1, (int)(this.getHeight()-h.get(""+(i+dice))*y_scale-100+1), (this.getWidth()-200)/pos-1, (int)(h.get(""+(i+dice))*y_scale-1));
 		}
+		g.setColor(Color.BLACK);
+		for (int i = 0; i < pos; i++){	
+			g.drawString(String.valueOf(h.get(""+(i+dice))), ((this.getWidth()-200)/(2*pos))*(2*i+1)+95, (int)(this.getHeight()-h.get(""+(i+dice))*y_scale-110)); 
+		}
 	}
 	
 	public void initrolls() {
@@ -105,7 +110,7 @@ public class Display extends JFrame implements MouseListener{
 				max = h.get("" + (i+dice));
 			}
 		}
-		max = max + 100 - (max % 100);
+		max = max + 50 - (max % 50);
 	}
 	
 	@Override
